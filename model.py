@@ -126,4 +126,5 @@ class Translator(nn.Module):
             idx_next = torch.multinomial(probs, num_samples=1)
             if idx_next.item() == end: break
             fr.append(idx_next)
+            idx = torch.cat([idx, idx_next], dim=1)
         return torch.cat(fr, dim=1)
